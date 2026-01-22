@@ -1,0 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#000000"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Attendance"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"/>
+
+    <TextView android:text="Maths - 72% (Not Eligible)" android:textColor="#FF5555"/>
+    <TextView android:text="Physics - 85% (Eligible)" android:textColor="#55FF55"/>
+</LinearLayout>
