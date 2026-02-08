@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h3>Login</h3>
+
+<input id="email" placeholder="Enter college email" />
+<button onclick="sendLink()">Send Login Link</button>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCq6mMZ4wADviGzxEfBL2-NbLfDoCDaed0",
+      authDomain: "ams-system-bd3e0.firebaseapp.com",
+      projectId: "ams-system-bd3e0",
+      storageBucket: "ams-system-bd3e0.firebasestorage.app",
+      messagingSenderId: "210862654865",
+      appId: "1:210862654865:web:78c66be46c82bb3f41c630"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.sendLink = function () {
+      const email = document.getElementById("email").value;
+
+      const actionCodeSettings = {
+        url: "http://localhost:8080/finish.html",
+        handleCodeInApp: true
+      };
+
+      sendSignInLinkToEmail(auth, email, actionCodeSettings)
+        .then(() => {
+          localStorage.setItem("emailForSignIn", email);
+          alert("Login link sent to email");
+        })
+        .catch(err => alert(err.message));
+    };
+</script>
+
+</body>
+</html>
