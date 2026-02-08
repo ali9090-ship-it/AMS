@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+<h3>Finishing Login...</h3>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+      getAuth,
+      isSignInWithEmailLink,
+      signInWithEmailLink
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCq6mMZ4wADviGzxEfBL2-NbLfDoCDaed0",
+      authDomain: "ams-system-bd3e0.firebaseapp.com",
+      projectId: "ams-system-bd3e0",
+      storageBucket: "ams-system-bd3e0.firebasestorage.app",
+      messagingSenderId: "210862654865",
+      appId: "1:210862654865:web:78c66be46c82bb3f41c630"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+
+      let email = localStorage.getItem("emailForSignIn");
+
+      if (!email) {
+        email = prompt("Enter your email again");
+      }
+
+      signInWithEmailLink(auth, email, window.location.href)
+        .then(async (result) => {
+
+          localStorage.removeItem("emailForSignIn");
+
+          const idToken = await result.user.getIdToken();
+
+          // send token to backend
+          fetch("/auth/login?idToken=" + idToken, {
+            method: "POST"
+          })
+          .then(r => r.text())
+          .then(data => {
+            document.body.innerHTML =
+              "<h2>Login Success</h2><pre>" + data + "</pre>";
+
+    ```
+      });
+
+    })
+    .catch(err => {
+      document.body.innerHTML = err.message;
+    });
+    ```
+
+    } </script>
+
+</body>
+</html>
