@@ -345,7 +345,7 @@ This project is for educational and demonstration purposes — M.H. Saboo Siddik
 **Khan Mohammad Anas Raza Aslam** — Lead Developer  
 **Ansari Mohd Ali Atiqueraheman** — Backend & Database  
 **Ansari Mohammad Anas Peer Mohammad** — Frontend & UI  
-**Vibhuti G. Kapdekar** — Research & Documentation  
+**Aquib Shaikh** — Research & Documentation  
 
 Supervised by **Dr. Irfan Landge** — Department of CSE-AIML, MHSSCE
 
