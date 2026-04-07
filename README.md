@@ -330,7 +330,6 @@ npm run test
 - [ ] Cloud deployment (Render + MongoDB Atlas / Railway)
 - [ ] Mobile app (React Native)
 - [ ] Email notifications for attendance warnings
-- [ ] Bulk student enrollment via CSV upload
 - [ ] Advanced analytics dashboard
 
 ---
@@ -348,7 +347,7 @@ This project is for educational and demonstration purposes — M.H. Saboo Siddik
 **Ansari Mohammad Anas Peer Mohammad** — Frontend & UI  
 **Aquib Shaikh** — Research & Documentation  
 
-Supervised by **Dr. Irfan Landge** — Department of CSE-AIML, MHSSCE
+Supervised by **Dr. Irfan Landge & Prof. Waseem Shaikh** — Department of CSE-AIML, MHSSCE
 
 ---
 
