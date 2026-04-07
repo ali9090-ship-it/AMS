@@ -240,6 +240,7 @@ Admin creates scholarships → AI checks eligibility → Students apply
 Students submit feedback → Teacher views analytics
 AI calculates risk scores → Teacher identifies at-risk students
 ```
+<img width="1282" height="1470" alt="image" src="https://github.com/user-attachments/assets/0411145f-f5c7-4a4f-af54-e0a9d6fab5bb" />
 
 ---
 
