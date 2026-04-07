@@ -1,4 +1,4 @@
-# <img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/6c890ec9-588a-4632-b03c-1fe534bd92d3" />
+# <img width="128" height="128" alt="image" src="https://github.com/user-attachments/assets/6c890ec9-588a-4632-b03c-1fe534bd92d3" />
  AMS — Academic Management System
 ### M.H. Saboo Siddik College of Engineering, Mumbai
 
