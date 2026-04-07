@@ -178,7 +178,7 @@ def delete_user(current_user, id):
     except Exception as e:
         return ApiResponse.error("INTERNAL_ERROR", str(e))
 
-@users_bp.route('/me/avatar', methods=['PUT'])
+@users_bp.route('/me/avatar', methods=['PUT', 'POST'])
 @token_required
 def upload_avatar(current_user):
     if 'file' not in request.files:
@@ -195,7 +195,8 @@ def upload_avatar(current_user):
         with db.session.begin_nested():
             current_user.avatar = relative_path
             db.session.add(current_user)
-        
+        db.session.commit()
+
         if old_avatar:
             delete_file(old_avatar)
         return ApiResponse.success({'avatar': relative_path}, "Avatar updated")

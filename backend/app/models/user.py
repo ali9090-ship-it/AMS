@@ -28,6 +28,7 @@ class User(db.Model):
             'roll_no': self.roll_no,
             'phone': self.phone,
             'avatar': self.avatar,
+            'avatar_url': self.avatar,
             'status': self.status,
             'risk_level': self.risk_level,
             'deleted_at': self.deleted_at.isoformat() if self.deleted_at else None,

@@ -4,6 +4,7 @@ import { PageTransition, AnimatedCard } from "@/components/animations";
 import { useAuth } from "@/contexts/AuthContext";
 import { apiFetch, apiUpload } from "@/lib/api";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import ImageCropper from "@/components/ImageCropper";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -12,6 +13,7 @@ export default function ProfilePage() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [cropFile, setCropFile] = useState<File | null>(null);
 
   const [editForm, setEditForm] = useState({
     name: user?.name || "",
@@ -59,13 +61,29 @@ export default function ProfilePage() {
     onError: (err: any) => alert(err.message)
   });
 
+  // When user selects a file, validate format and open cropper
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const fd = new FormData();
-      fd.append('file', e.target.files[0]);
-      uploadAvatarMutation.mutate(fd);
+      const file = e.target.files[0];
+      const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif"];
+      if (!allowedTypes.includes(file.type)) {
+        alert("Please select a valid image file (JPG, JPEG, PNG, WebP, or GIF).");
+        return;
+      }
+      setCropFile(file);
     }
+    // Reset so re-selecting same file still triggers
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
+
+  // After cropping, upload the cropped blob
+  const handleCropped = (blob: Blob) => {
+    setCropFile(null);
+    const fd = new FormData();
+    fd.append("file", blob, "avatar.png");
+    uploadAvatarMutation.mutate(fd);
+  };
+
 
   const handleProfileSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -99,7 +117,8 @@ export default function ProfilePage() {
   ];
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5001';
-  const avatarSrc = profile.avatar_url ? `${API_URL}/${profile.avatar_url}` : null;
+  const avatarPath = profile.avatar_url || profile.avatar;
+  const avatarSrc = avatarPath ? `${API_URL}/${avatarPath}` : null;
 
   return (
     <PageTransition className="space-y-6">
@@ -213,6 +232,15 @@ export default function ProfilePage() {
         </AnimatedCard>
       )}
 
+      {/* Image Cropper Modal */}
+      {cropFile && (
+        <ImageCropper
+          imageFile={cropFile}
+          onCropped={handleCropped}
+          onCancel={() => setCropFile(null)}
+        />
+      )}
+
       <AnimatedCard className="rounded-xl border border-border bg-card p-6 shadow-sm">
         <div className="mb-6 flex items-center gap-6">
           <div className="relative group">
@@ -223,13 +251,19 @@ export default function ProfilePage() {
                 {profile.name?.charAt(0)}
               </div>
             )}
+            {uploadAvatarMutation.isPending && (
+              <div className="absolute inset-0 flex items-center justify-center rounded-full bg-black/50">
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-white border-t-transparent" />
+              </div>
+            )}
             <button 
               onClick={() => fileInputRef.current?.click()}
-              className="absolute bottom-0 right-0 p-2 bg-primary text-primary-foreground rounded-full shadow-md hover:scale-110 transition-transform"
+              disabled={uploadAvatarMutation.isPending}
+              className="absolute bottom-0 right-0 p-2 bg-primary text-primary-foreground rounded-full shadow-md hover:scale-110 transition-transform disabled:opacity-50"
             >
               <Camera className="h-4 w-4" />
             </button>
-            <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={handleAvatarChange} />
+            <input type="file" ref={fileInputRef} className="hidden" accept=".jpg,.jpeg,.png,.webp,.gif" onChange={handleAvatarChange} />
           </div>
           <div>
             <h2 className="text-2xl font-bold text-foreground">{profile.name}</h2>

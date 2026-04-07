@@ -1,0 +1,4 @@
+name,email,role,branch,password,roll_no,status
+Jane Doe,jane.doe@example.com,student,Computer Science,pass123,CS1001,Active
+John Smith,john.smith@example.com,teacher,,pass123,,Active
+Alice Johnson,alice.j@example.com,student,Mechanical,pass123,ME1002,Pending
