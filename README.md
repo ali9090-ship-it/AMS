@@ -1,4 +1,4 @@
-# <img width="32" height="32" alt="image" src="https://github.com/user-attachments/assets/6c890ec9-588a-4632-b03c-1fe534bd92d3" /> AMS — Academic Management System
+# <img width="64" height="64" alt="image" src="https://github.com/user-attachments/assets/6c890ec9-588a-4632-b03c-1fe534bd92d3" /> AMS — Academic Management System
 ### M.H. Saboo Siddik College of Engineering, Mumbai
 
 A full-stack Academic Management System built for MHSSCE to digitize and streamline student, teacher, and administrative workflows across the institution.
