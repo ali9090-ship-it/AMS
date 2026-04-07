@@ -1,0 +1,49 @@
+# ========================
+# Node / Frontend
+# ========================
+node_modules/
+dist/
+dist-ssr/
+
+# ========================
+# Python / Backend
+# ========================
+venv/
+__pycache__/
+*.pyc
+
+# ========================
+# Environment / Secrets
+# ========================
+.env*
+*.local
+*.json
+
+# ========================
+# Uploads / User Data (VERY IMPORTANT)
+# ========================
+backend/uploads/
+
+# ========================
+# Logs
+# ========================
+logs/
+*.log
+
+# ========================
+# OS / Editor
+# ========================
+.DS_Store
+.vscode/
+.idea/
+
+# ========================
+# Junk / Archives
+# ========================
+*.zip
+
+# ========================
+# Duplicate projects (REMOVE THIS TRASH)
+# ========================
+project/
+project 2/
