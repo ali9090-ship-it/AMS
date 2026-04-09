@@ -410,10 +410,10 @@ This project is for educational and demonstration purposes — M.H. Saboo Siddik
 
 ## 👤 Authors
 
-**Khan Mohammad Anas Raza Aslam** — Lead Developer  
-**Ansari Mohd Ali Atiqueraheman** — Backend & Database  
+**Khan Mohammad Anas Raza Aslam** — Lead Developer(Backend & Database )  
 **Ansari Mohammad Anas Peer Mohammad** — Frontend & UI  
-**Aquib Shaikh** — Research & Documentation  
+**Ansari Mohd Ali Atiqueraheman** — Research & Documentation 
+**Aquib Shaikh** —  
 
 Supervised by **Dr. Irfan Landge & Prof. Waseem Shaikh** — Department of CSE-AIML, MHSSCE
 
